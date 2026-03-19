@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuv ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#ffc0cb;
+text-align:center;
+color:#fff;
+}
+
+#screen{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
+}
+
+h1{font-size:35px;}
+h2{font-size:26px;}
+p{font-size:20px;}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:25px;
+background:#ff1493;
+color:white;
+margin:10px;
+}
+
+img{
+width:80%;
+max-width:250px;
+border-radius:15px;
+margin:10px;
+}
+
+/* final screen */
+.final{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(45deg,#ff4da6,#ff99cc);
+}
+
+.play{
+padding:15px 25px;
+font-size:18px;
+border-radius:25px;
+background:white;
+color:#ff1493;
+margin-top:20px;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="screen">
+
+<img src="mickey.png">
+
+<h1>Hey Yuv 💖</h1>
+<p>Ready for your surprise?</p>
+
+<button onclick="start()">Start</button>
+
+</div>
+
+<script>
+
+function start(){
+document.getElementById("screen").innerHTML = `
+<h2>Choose the right door 🚪</h2>
+<button onclick="wrong()">Door 1</button>
+<button onclick="correct()">Door 2</button>
+<button onclick="wrong()">Door 3</button>
+`;
+}
+
+function wrong(){
+alert("Galat 😜 try again");
+}
+
+function correct(){
+document.getElementById("screen").innerHTML = `
+<h2>Our Memories ❤️</h2>
+<img src="pic1.jpg">
+<img src="pic2.jpg">
+<img src="pic3.jpg">
+<button onclick="quiz()">Next</button>
+`;
+}
+
+function quiz(){
+document.getElementById("screen").innerHTML = `
+<h2>Riya tumhe sabse zyada kis naam se bulati hai? 😉</h2>
+<input id="ans">
+<br>
+<button onclick="check()">Submit</button>
+`;
+}
+
+function check(){
+let v=document.getElementById("ans").value.toLowerCase();
+
+if(v==="mera pyara bacha"){
+message();
+}else{
+alert("Wrong 😏");
+}
+}
+
+function message(){
+document.getElementById("screen").innerHTML = `
+<p>
+Yuv… I know you feel your birthday is bad luck…<br><br>
+But for me… it’s the luckiest day ❤️<br><br>
+Because you came into this world 😌
+</p>
+<button onclick="final()">Continue</button>
+`;
+}
+
+function final(){
+document.body.innerHTML = `
+<div class="final">
+
+<h1>
+HAPPY BIRTHDAY MY LOVE ❤️🌚💋<br>
+I LOVE YOU SO MUCH, ALWAYS 🫣🫶🏻💕
+</h1>
+
+<p>I made this for you… please listen ❤️</p>
+
+<button class="play" onclick="play()">▶ Play Voice</button>
+
+<audio id="voice">
+<source src="yuv.mp3">
+</audio>
+
+</div>
+`;
+
+for(let i=0;i<20;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+}
+}
+
+function play(){
+document.getElementById("voice").play();
+}
+
+</script>
+
+</body>
+</html>
